@@ -1,0 +1,111 @@
+{
+    "name": "cucumber-webdriverio",
+    "version": "0.1.0",
+    "main": "wdio.conf.js",
+    "keywords": [],
+    "author": "Yon Cuadrado <yon.cuadrado@gmail.com>",
+    "license": "ISC",
+    "description": "Example of testing project that includes cucumber-js, page object model, webdriverio and allure",
+    "devDependencies": {
+        "@babel/core": "7.6.4",
+        "@typescript-eslint/eslint-plugin": "2.4.0",
+        "babel-jest": "24.9.0",
+        "chromedriver": "77.0.0",
+        "eslint": "6.5.1",
+        "eslint-config-airbnb-base": "14.0.0",
+        "eslint-config-standard": "14.1.0",
+        "eslint-plugin-import": "2.18.2",
+        "forever": "1.0.0",
+        "http-server": "0.11.1",
+        "jest": "24.9.0",
+        "npm-check-updates": "3.1.24",
+        "npm-run-all": "4.1.5",
+        "nyc": "14.1.1",
+        "prettier-eslint": "9.0.0",
+        "ts-node": "8.4.1",
+        "tsconfig-paths": "3.9.0",
+        "typescript": "3.6.4",
+        "wdio-chromedriver-service": "5.0.2",
+        "@types/cucumber": "4.0.7",
+        "@wdio/cli": "5.15.1",
+        "@wdio/config": "5.15.1",
+        "@wdio/cucumber-framework": "5.15.1",
+        "@wdio/dot-reporter": "5.14.5",
+        "@wdio/local-runner": "5.15.1",
+        "@wdio/mocha-framework": "^5.15.1",
+        "@wdio/selenium-standalone-service": "5.15.0",
+        "@wdio/spec-reporter": "5.15.1",
+        "@wdio/sync": "5.15.1",
+        "axios": "^0.19.0",
+        "chai": "4.2.0",
+        "chai-as-promised": "7.1.1",
+        "eslint-plugin-wdio": "5.13.2",
+        "exceljs": "3.2.0",
+        "merge": "1.2.1",
+        "wdio-allure-reporter": "0.8.3",
+        "wdio-cucumber-json-reporter": "0.0.4",
+        "wdio-cucumberjs-json-reporter": "1.1.1",
+        "wdio-json-cucumber-reporter": "1.2.4",
+        "webdriverio": "5.15.1"
+    },
+    "scripts": {
+        "test:local": "wdio ./test/cucumber/configuration/local.conf.js",
+        "test:ci": "wdio ./test/cucumber/configuration/ci.conf.js",
+        "test:ci-multi": "wdio ./test/cucumber/configuration/ci-multi.conf.js",
+        "test:report": "allure serve ./report/allure-results",
+        "clean": "read -p \"Are you sure you want to clean the project? [y/n] \" REPLY; if [[ $REPLY =~ ^[Yy]$ ]]; then rm -R .git .github demo-app test .codeclimate.yml .travis.yml jest.json wdio.BUILD.conf.js src/features/**; fi",
+        "local-webserver": "forever start -s ./node_modules/.bin/http-server ./demo-app -s",
+        "test": "run-s test:*",
+        "test:lint": "eslint 'src/**/*.js' 'test/**/*.js!(setup.js)'",
+        "test:unit": "jest --config=jest.json --detectOpenHandles",
+        "test:features": "npm run local-webserver & (wdio wdio.BUILD.conf.js; wdio_ret=$?; forever stopall; exit $wdio_ret)",
+        "update-package-json-dependencies": "npx ncu -u",
+        "install-chromedriver": "selenium-standalone install --drivers.chrome.version=77.0.3865.40 --drivers.chrome.baseURL=https://chromedriver.storage.googleapis.com",
+        "getStepsSnippetsWithCucumber": "npx cucumber-js --format 'snippets' --format-options '{\"snippetInterface\": \"synchronous\"}'",
+        "generateCucumberSteps": "wdio ./test/cucumber/configuration/local-conf-generate-steps.js"
+    },
+    "dependencies": {},
+    "eslintConfig": {
+        "env": {
+            "browser": true,
+            "commonjs": true,
+            "mocha": true
+        },
+        "extends": [
+            "standard",
+            "eslint:recommended",
+            "plugin:@typescript-eslint/eslint-recommended",
+            "plugin:@typescript-eslint/recommended"
+        ],
+        "globals": {
+            "Atomics": "readonly",
+            "SharedArrayBuffer": "readonly"
+        },
+        "parserOptions": {
+            "parser": "@typescript-eslint/parser",
+            "ecmaVersion": 2018
+        },
+        "rules": {
+            "semi": [
+                2,
+                "always"
+            ],
+            "indent": [
+                "error",
+                4
+            ],
+            "no-unused-expressions": 0,
+            "chai-friendly/no-unused-expressions": 2,
+            "space-before-function-paren": [
+                "error",
+                "always"
+            ]
+        },
+        "plugins": [
+            "chai-friendly",
+            "eslint-plugin-standard",
+            "eslint-plugin-promise",
+            "@typescript-eslint"
+        ]
+    }
+}

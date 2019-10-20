@@ -1,0 +1,32 @@
+{
+    
+    "compileOnSave": true,
+    "compilerOptions": {
+        "strict": false,
+        "strictNullChecks":false,
+        "noImplicitAny" : false,
+        // "allowJs": true,
+        "sourceMap": true,
+        "declaration": true,
+        "typeRoots": ["./test/cucumber/types"],
+        "rootDirs": ["js", "typings"],
+        "target": "ES2016",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "*": [ "./*" ],
+            "src/*": ["./src/*"],
+            "exceljs": ["../node_modules/exceljs/dist/exceljs.min.js"]
+        },
+        "types": ["node", "@wdio/sync", "@wdio/cucumber-framework", "@wdio/selenium-standalone-service"],
+        // "allowSyntheticDefaultImports": true, 
+        // "esModuleInterop": true,
+        // "experimentalDecorators": true, 
+        // "emitDecoratorMetadata": true,
+        "outDir": "./.tmp/js"
+    },
+    "include": [
+        "./test/**/*.ts"
+    ]
+}

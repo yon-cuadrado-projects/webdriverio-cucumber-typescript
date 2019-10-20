@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch wdio",
+            "timeout": 60000,
+            // "protocol": "inspector",
+            "port": 5859,
+            "autoAttachChildProcesses": true,
+            // "program":"${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
+            "runtimeExecutable":"${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
+            "cwd": "${workspaceRoot}",
+            "console": "integratedTerminal",
+            "outputCapture": "std",
+            // "sourceMaps": true,
+            "args": [
+                "run",
+                "${workspaceFolder}/test/cucumber/configuration/js/local-conf-debug.js"
+                // "${workspaceFolder}/test/cucumber/jsConfiguration/local-conf-debug.js"
+            ]
+        }
+    ]
+}
