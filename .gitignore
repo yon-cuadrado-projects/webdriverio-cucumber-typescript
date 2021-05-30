@@ -7,5 +7,7 @@ report
 .DS_Store
 assets/.DS_Store
 yarn.lock
+dist/
 .tmp
 .nyc_output
+logs/

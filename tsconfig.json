@@ -1,32 +1,40 @@
 {
-    
     "compileOnSave": true,
     "compilerOptions": {
-        "strict": false,
-        "strictNullChecks":false,
+        "noFallthroughCasesInSwitch": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "strict": true,
+        // "diagnostics": true,
+        // "listFiles": true,
+        "strictNullChecks": false,
         "noImplicitAny" : false,
-        // "allowJs": true,
+        "preserveSymlinks": true,
+        "allowJs": true,
+        "resolveJsonModule": true,
         "sourceMap": true,
+        // "declaration": false,
         "declaration": true,
-        "typeRoots": ["./test/cucumber/types"],
-        "rootDirs": ["js", "typings"],
-        "target": "ES2016",
+        // "declarationMap": true,
+        // "inlineSourceMap": true,
+        "inlineSources": true,
+        "typeRoots": ["./node_modules/@types","./test/cucumber/types" ],
+        "rootDir": "test",
+        "target": "ES2020",
         "module": "commonjs",
         "moduleResolution": "node",
         "baseUrl": ".",
-        "paths": {
-            "*": [ "./*" ],
-            "src/*": ["./src/*"],
-            "exceljs": ["../node_modules/exceljs/dist/exceljs.min.js"]
-        },
-        "types": ["node", "@wdio/sync", "@wdio/cucumber-framework", "@wdio/selenium-standalone-service"],
-        // "allowSyntheticDefaultImports": true, 
-        // "esModuleInterop": true,
-        // "experimentalDecorators": true, 
-        // "emitDecoratorMetadata": true,
-        "outDir": "./.tmp/js"
+        "types": ["node", "webdriverio/sync", "@wdio/cucumber-framework", "@wdio/selenium-standalone-service","@types/fs-extra", "long","./test/cucumber/types/wdio"],
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "outDir": "./dist",
+        "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
     },
     "include": [
-        "./test/**/*.ts"
+        "**/*.ts",
+        "**/**/*.ts",
+        "**/**/**/*.ts"
     ]
 }

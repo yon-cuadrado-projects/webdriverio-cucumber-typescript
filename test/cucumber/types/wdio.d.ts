@@ -1,26 +1,39 @@
-// import { Interface } from "readline";
+import { Params } from '../configuration/ts/models/wddio-conf-additional-properties';
 
-// import * as params from '../configuration/params';
-// import  {config} from '../configuration/params.js'
+export {};
+declare global {
+  namespace WebdriverIO {
+  // import( './ConfigurationData' ); // Don't delete this line.
+  // import { User } from './user';
+  // Adding command to `browser`
 
-declare module WebdriverIO {
-    // adding command to `browser`
+    // interface Options.WebdriverIO{
+    //   Params: Params;
+    // }
     interface Browser {
-        
-        browserCustomCommand: (arg: string) => void
-        config: Params;
+      browserCustomCommand: ( arg: string ) => void;
+      config: Config;
+      params: Params;
+      destUrl: string;
+      // options: {
+      // };
     }
 
     interface Element {
-        // don't forget to wrap return values with Promise
-        hoverAndClick: () => void
-        WaitUntilCheckIsEnabled(result: boolean, timeout: number): () => void
-        GetWebElementLineNumbers: () => void
-        waitUntilIsEnabled: (timeout: number) => boolean
+    // Don't forget to wrap return values with Promise
+      // waitForClickable: ( timeout: number ) => boolean;
+      waitUntilIsEnabled: ( ms: number ) => boolean;
+      // waitForDisplayed: ( timeout: number ) => boolean;
+      GetWebElementLineNumbers: () => void;
+      hoverAndClick: () => void;
+      WaitUntilCheckIsEnabled( result: boolean, timeout: number ): () => void;
+      getCheckboxStatus( checkboxLabel: string ): string;
+      getCheckBox ( label: string ): WebdriverIO.Element;
+      clickOnCheckbox( checkboxLabel: string, page: string ): void;
     }
 
-    interface Config{
-        params?: Params
-        urls?: Urls
-        }
+    interface Config {
+      params?: Params;
     }
+  }
+}

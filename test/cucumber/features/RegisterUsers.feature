@@ -3,7 +3,7 @@ Feature: Create users in the website http://newtours.demoaut.com/index.php
 
 @Register_Users
 Scenario: Register users with data from Excel File
-	Given I navigate to the page "RegistrationUsersUrl"
-	When I get the data from the excel file "TestData"
+	Given I navigate to the page 'RegistrationUsersUrl'
+	When I get the data from the excel file
 	And I register users with the data of the excel file "TestData"
 	Then The users are created correctly

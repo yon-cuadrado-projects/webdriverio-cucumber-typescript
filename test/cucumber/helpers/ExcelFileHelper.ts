@@ -1,50 +1,40 @@
-// const Excel = require('exceljs');
-import * as Excel from "exceljs";
+import * as Excel from 'exceljs';
 
 export class ExcelFileHelper {
-    fileName: string;
-    sheetName: string;
-    ExcelWorkbook: Excel.Workbook;
-    Workbook: Excel.Workbook;
-    ExcelSheet: Excel.Worksheet;
+  public fileName: string;
+  public sheetName: string;
+  public ExcelWorkbook: Excel.Workbook;
+  public Workbook: Excel.Workbook;
+  public ExcelSheet: Excel.Worksheet;
 
-    constructor (fileName: string, sheetName:string) {
-        this.fileName = fileName;
-        this.sheetName = sheetName;
-        // this.ExcelWorkbook = new Excel.Workbook();
-        this.Workbook = null;
-        this.ExcelSheet = null;
-    }
+  public constructor( fileName: string, sheetName: string ) {
+    this.Workbook = new Excel.Workbook();
+    this.fileName = fileName;
+    this.sheetName = sheetName;
+  }
 
-    async init () {
-        this.Workbook = await this.getWorkbook(this.fileName);
-        this.ExcelSheet = await this.getWorkSheet(this.sheetName);
-        return this;
-    }
+  public async getWorkbook( fileName: string ): Promise<Excel.Workbook> {
+    const workbook = new Excel.Workbook();
+    const readFile = await workbook.xlsx.readFile( fileName );
+    return readFile;
+  }
 
-    async getWorkbook (fileName) {
-        return await this.Workbook.xlsx.readFile(fileName);
-    }
+  public async init(): Promise<ExcelFileHelper> {
+    this.Workbook = await this.getWorkbook( this.fileName );
+    this.ExcelSheet = this.getWorkSheet( this.sheetName );
+    return this;
+  }
 
-    async getWorkSheet (sheetName) {
-        return await this.Workbook.getWorksheet(sheetName);
-    }
+  public getWorkSheet( sheetName: string ): Excel.Worksheet {
+    return this.Workbook.getWorksheet( sheetName );
+  }
 
-    async getCellText (cell) {
-        return this.ExcelSheet.getCell(cell).text;
-        // var workbook = new Excel.Workbook();
-        // workbook.xlsx.readFile(filename)
-        // .then(readFile => {
-        //   // use workbook
-        //   readFile.getWorksheet('My Sheet').getCell()
-        // });
-    }
+  public getCellText( cell: string ): string {
+    return this.ExcelSheet.getCell( cell ).text;
+  }
 
-    async getWorkSheetRowCount (sheetName) {
-        var sheet = await this.getWorkSheet(sheetName);
-        return await sheet.rowCount;
-    }
+  public getWorkSheetRowCount( sheetName: string ): number {
+    const sheet = this.getWorkSheet( sheetName );
+    return sheet.rowCount;
+  }
 }
-
-// module.exports = ExcelFileHelper;
-// export default new ExcelFileHelper{};

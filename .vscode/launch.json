@@ -5,24 +5,53 @@
     "version": "0.2.0",
     "configurations": [
         {
+            // "sourceMaps": true,
+            // "resolveSourceMapLocations": [
+            //     "${workspaceFolder}/**",
+            //     "!**/node_modules/**"
+            // ],
+            // "type": "pwa-node",
             "type": "node",
             "request": "launch",
-            "name": "Launch wdio",
+            "name": "Launch wdio typescript",
             "timeout": 60000,
             // "protocol": "inspector",
-            "port": 5859,
+            // "port": 5859,
             "autoAttachChildProcesses": true,
-            // "program":"${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
+            // "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
             "runtimeExecutable":"${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
+            "windows": {
+                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/wdio.cmd"
+            },
+            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
             "cwd": "${workspaceRoot}",
             "console": "integratedTerminal",
-            "outputCapture": "std",
-            // "sourceMaps": true,
+            // "outputCapture": "std",
+            "envFile":"${workspaceRoot}/webdriverio.env",
+            // "smartStep": true,
             "args": [
                 "run",
-                "${workspaceFolder}/test/cucumber/configuration/js/local-conf-debug.js"
-                // "${workspaceFolder}/test/cucumber/jsConfiguration/local-conf-debug.js"
-            ]
+                "${workspaceFolder}/test/cucumber/configuration/js/local-conf.js",
+                // "${workspaceFolder}/test/cucumber/configuration/js/local-conf.js",
+                // "${workspaceFolder}/test/cucumber/configuration/ts/local-conf.ts",
+                "--spec",
+                "test/cucumber/features/actions-in-browser.feature",
+                "--browser=chrome",
+                "--debug",
+                " --maxInstances=1"
+            ],
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/**"
+              ],
+            "disableOptimisticBPs": true,
+            // "env": { 
+            //     "DEBUG": "1" 
+            //     // use an environment variable to be able 
+            //     // to toggle debug mode on and off 
+            //   }
+
+            
         }
     ]
 }

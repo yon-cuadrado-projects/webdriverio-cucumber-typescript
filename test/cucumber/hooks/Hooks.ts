@@ -1,7 +1,7 @@
-const { BeforeAll, Before } = require('cucumber');
-var { setDefaultTimeout } = require('cucumber');
+import { Before, setDefaultTimeout } from '@cucumber/cucumber';
 
-Before(async function (scenario) {
-    // new extensionsHelper(this.driver).initializeExtensions();
-    setDefaultTimeout(30000);
-});
+Before(
+  async (): Promise<void> => {
+    setDefaultTimeout( 30000 );
+  },
+);
