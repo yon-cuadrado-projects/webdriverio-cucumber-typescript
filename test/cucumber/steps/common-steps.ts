@@ -14,7 +14,7 @@ Given( /^The user navigates to the page '(.*)'$/, ( url: string ) => {
 } );
 
 When( /^The user clicks on the checkbox '(.*)' of the '(.*)' page$/, ( checkboxLabel: string, pageName: string ) =>{
-  const pageObject: IBasePage = container.resolve<CheckboxesPage>( pageName );
+  const pageObject: BasePage = container.resolve<CheckboxesPage>( pageName );
   pageObject.clickOnCheckbox( checkboxLabel );
 } );
 

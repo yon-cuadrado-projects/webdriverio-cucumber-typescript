@@ -1,6 +1,3 @@
-// import { Pages } from './Pages';
-import { container, injectable } from 'tsyringe';
-
 export class BasePage {
   public mainObjectXpath: string;
   public mainObject: WebdriverIO.Element;
@@ -34,14 +31,10 @@ export class BasePage {
   public getCheckboxStatus ( checkboxLabel: string ): string {
     return this.getCheckBox( checkboxLabel ).parentElement().getAttribute( 'class' ) === 'checked' ? 'activated' : 'deactivated';
   }
-
-  // public getCheckboxStatus( checkboxLabel: string ): string{
-  //   return this.mainObject.getCheckboxStatus( checkboxLabel );
-  // }
 }
 
-export interface PageObject{
-  mainObject: WebdriverIO.Element;
-  getCheckboxStatus( checkboxLabel: string ): string;
-  clickOnCheckbox( checkboxLabel: string, page: string ): void;
-}
+// export interface PageObject{
+//   mainObject: WebdriverIO.Element;
+//   getCheckboxStatus( checkboxLabel: string ): string;
+//   clickOnCheckbox( checkboxLabel: string, page: string ): void;
+// }
