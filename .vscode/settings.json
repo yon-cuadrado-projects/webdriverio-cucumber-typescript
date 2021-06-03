@@ -16,25 +16,29 @@
   "prettier.bracketSpacing": true,
   "cucumberautocomplete.strictGherkinValidation": true,
   "cucumberautocomplete.customParameters": [
+      // {
+      //   "parameter":"{ab}",
+      //   "value":"(a|b)"
+      // },
+      // {
+      //   "parameter": "/\{a.*\}/",
+      //   "value": "a"
+      // },
+      // {
+      //   "parameter": "'{string}'",
+      //   "value": "'[^']+'"
+      // },
       {
-        "parameter":"{ab}",
-        "value":"(a|b)"
-      },
-      {
-        "parameter": "/\{a.*\}/",
-        "value": "a"
-      },
-      {
-        "parameter": "{string}",
+        "parameter": "'<{string}>'",
         "value": "'[^']+'"
-      }  
+      }
     ],
   "cucumberautocomplete.pages": {
       "users": "test/features/page_objects/users.storage.js",
       "pathes": "test/features/page_objects/pathes.storage.js",
       "main": "test/features/support/page_objects/main.page.js"
   },
-  "cucumberautocomplete.stepRegExSymbol": "'",
+
   "cucumberautocomplete.steps": [
       "test/cucumber/steps/*.ts"
   ],
@@ -53,7 +57,7 @@
       "strings": true,
       "other": true
   },
-  "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
+  "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)",
   "eslint.validate": [
     "javascript",
     "typescript",

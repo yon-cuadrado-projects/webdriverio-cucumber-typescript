@@ -1,11 +1,11 @@
 class CustomCommands {
-  public constructor() { }
-
   public createCutomCommands (): void {
-    browser.addCommand( 'waitAndClick', function ( this: WebdriverIO.Element ) {
-      // `this` is return value of $(selector)
-      this.waitForDisplayed();
-      this.click();
+    browser.addCommand( 'getCheckBox', function ( this: WebdriverIO.Element, checkboxLabel: string ) {
+      return this.$( `.//*[.='${checkboxLabel}']/../..//input` );
+    }, true );
+
+    browser.addCommand( 'getCheckBoxStatus', function ( this: WebdriverIO.Element, checkboxLabel: string ) {
+      this.getCheckBox( checkboxLabel ).click();
     }, true );
 
     browser.addCommand( 'waitForClickable', function ( this: WebdriverIO.Element ,ms = 5 ): boolean | void {

@@ -1,8 +1,15 @@
 // import { Pages } from './Pages';
-import { container } from 'tsyringe';
+import { container, injectable } from 'tsyringe';
 
 export class BasePage {
-  public constructor() { }
+  public mainObjectXpath: string;
+  public mainObject: WebdriverIO.Element;
+
+  public constructor( mainObjectXpath?: string ) {
+    console.log( mainObjectXpath );
+    this.mainObjectXpath = mainObjectXpath;
+    this.mainObject = mainObjectXpath ? $( mainObjectXpath ) : null;
+  }
 
   public navigateToUrl ( url: string | undefined ): void {
     browser.url( this.getUrl( url ) );
@@ -16,21 +23,25 @@ export class BasePage {
     return urlFromData;
   }
 
-  public clickOnCheckbox( checkboxLabel: string, page: string ): void{
-    const pageObject: PageObject = container.resolve( page );
-    pageObject.mainObject.waitUntilIsEnabled( 2 );
-    pageObject.mainObject.getCheckBox( checkboxLabel ).click();
+  public clickOnCheckbox( checkboxLabel: string ): void{
+    this.getCheckBox( checkboxLabel ).click();
   }
 
-  public getCheckboxStatus( checkboxLabel: string, page: string ): string{
-    const pageObject: PageObject = container.resolve( page );
-    return pageObject.getCheckboxStatus( checkboxLabel );
+  public getCheckBox ( label: string ): WebdriverIO.Element {
+    return this.mainObject.$( `.//*[.='${label}']/../..//input` );
   }
+
+  public getCheckboxStatus ( checkboxLabel: string ): string {
+    return this.getCheckBox( checkboxLabel ).parentElement().getAttribute( 'class' ) === 'checked' ? 'activated' : 'deactivated';
+  }
+
+  // public getCheckboxStatus( checkboxLabel: string ): string{
+  //   return this.mainObject.getCheckboxStatus( checkboxLabel );
+  // }
 }
 
 export interface PageObject{
   mainObject: WebdriverIO.Element;
-  getCheckBox( label: string ): WebdriverIO.Element;
   getCheckboxStatus( checkboxLabel: string ): string;
   clickOnCheckbox( checkboxLabel: string, page: string ): void;
 }

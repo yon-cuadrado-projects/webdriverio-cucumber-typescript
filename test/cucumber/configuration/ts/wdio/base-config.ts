@@ -1,11 +1,8 @@
 import 'reflect-metadata';
-// import { IPickle, IPickleStep } from '@wdio/cucumber-framework';
 import { CustomCommands } from '../../../custom-commands/custom-commands';
-// import { GenerateReport } from 'cucumber-report-generator-unified';
+import Frameworks from '@wdio/types';
 import { LoadContainer } from '../container/container';
 import { messages } from 'cucumber-messages';
-// import { StepData } from '@wdio/cucumber-framework';
-// import mergeResults = require( 'wdio-json-reporter/mergeResults' );
 import path from 'path';
 import Pickle = messages.Pickle;
 import IPickle = messages.IPickle;
@@ -18,20 +15,20 @@ const CucumberJsJsonReporter = require( 'wdio-cucumberjs-json-reporter' ).defaul
 
 
 const config: WebdriverIO.Config = {
-  autoCompileOpts: {
-    autoCompile: true,
-    // see https://github.com/TypeStrong/ts-node#cli-and-programmatic-options
-    // for all available options
-    tsNodeOpts: {
-      transpileOnly: true,
-      project: 'tsconfig.json'
-    },
-    // tsconfig-paths is only used if "tsConfigPathsOpts" are provided, if you
-    // do please make sure "tsconfig-paths" is installed as dependency
-    // tsConfigPathsOpts: {
-    //   baseUrl: './'
-    // }
-  },
+  // autoCompileOpts: {
+  //   autoCompile: true,
+  //   // see https://github.com/TypeStrong/ts-node#cli-and-programmatic-options
+  //   // for all available options
+  //   tsNodeOpts: {
+  //     transpileOnly: true,
+  //     project: 'tsconfig.json'
+  //   },
+  //   // tsconfig-paths is only used if "tsConfigPathsOpts" are provided, if you
+  //   // do please make sure "tsconfig-paths" is installed as dependency
+  //   // tsConfigPathsOpts: {
+  //   //   baseUrl: './'
+  //   // }
+  // },
   //
   // ==================
   // Specify Test Files
@@ -172,6 +169,7 @@ const config: WebdriverIO.Config = {
   //     }
   // },
   cucumberOpts: {
+    snippetSyntax: '',
     require: ['./test/cucumber/steps/*.ts'], // <string[]> (file/dir) require files before executing features
     backtrace: true, // <boolean> show full backtrace for errors
     // Compiler: ['js:babel-register'], // <string[]> ("extension:module") require files with the given
@@ -228,14 +226,10 @@ const config: WebdriverIO.Config = {
     try {
       browser.maximizeWindow();
     } catch ( e ) {}
-    new LoadContainer();
     // Browser.timeouts('implicit', 1000);
 
-    /**
-     * Import customs commands
-     */
-
     new CustomCommands().createCutomCommands();
+    new LoadContainer();
   },
   /**
    * Hook that gets executed before the suite starts
@@ -339,7 +333,7 @@ const config: WebdriverIO.Config = {
     console.log( 'report joined' );
   },
 
-  afterStep: ( step: IPickleStep, scenario: IPickle, passed: boolean ): void => {
+  afterStep: ( step: IPickleStep, scenario: IPickle, result: Frameworks.Frameworks.PickleResult ): void => {
     // If test fail save the screenshot.
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     CucumberJsJsonReporter.attach( browser.takeScreenshot(), 'image/png' );
@@ -396,9 +390,7 @@ const config: WebdriverIO.Config = {
             },
           },
         },
-      },
-    ],
-  ],
+      }]],
 };
 
 export { config };
