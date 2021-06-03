@@ -15,20 +15,20 @@ const CucumberJsJsonReporter = require( 'wdio-cucumberjs-json-reporter' ).defaul
 
 
 const config: WebdriverIO.Config = {
-  // autoCompileOpts: {
-  //   autoCompile: true,
-  //   // see https://github.com/TypeStrong/ts-node#cli-and-programmatic-options
-  //   // for all available options
-  //   tsNodeOpts: {
-  //     transpileOnly: true,
-  //     project: 'tsconfig.json'
-  //   },
-  //   // tsconfig-paths is only used if "tsConfigPathsOpts" are provided, if you
-  //   // do please make sure "tsconfig-paths" is installed as dependency
-  //   // tsConfigPathsOpts: {
-  //   //   baseUrl: './'
-  //   // }
-  // },
+  autoCompileOpts: {
+    autoCompile: true,
+    // see https://github.com/TypeStrong/ts-node#cli-and-programmatic-options
+    // for all available options
+    tsNodeOpts: {
+      transpileOnly: true,
+      project: 'tsconfig.json'
+    },
+    // tsconfig-paths is only used if "tsConfigPathsOpts" are provided, if you
+    // do please make sure "tsconfig-paths" is installed as dependency
+    // tsConfigPathsOpts: {
+    //   baseUrl: './'
+    // }
+  },
   //
   // ==================
   // Specify Test Files
@@ -349,7 +349,7 @@ const config: WebdriverIO.Config = {
     [
       'selenium-standalone',
       {
-        logPath: './.tmp/selenium-logs',
+        logPath: './.tmp/',
         installArgs: {
           drivers: {
             chrome: {
@@ -358,15 +358,15 @@ const config: WebdriverIO.Config = {
               baseURL: 'https://chromedriver.storage.googleapis.com',
             },
             firefox: {
-              version: '0.28.0',
+              version: 'latest',
               arch: process.arch,
               baseURL: 'https://github.com/mozilla/geckodriver/releases/download',
             },
-            chromiumedge: {
-              version: 'latest',
-              arch: process.arch,
-              baseURL: 'http://selenium-release.storage.googleapis.com/',
-            },
+            // chromiumedge: {
+            //   version: 'latest',
+            //   arch: process.arch,
+            //   baseURL: 'http://selenium-release.storage.googleapis.com/',
+            // },
           },
         },
         args: {
@@ -379,15 +379,15 @@ const config: WebdriverIO.Config = {
               baseURL: 'https://chromedriver.storage.googleapis.com',
             },
             firefox: {
-              version: '0.28.0',
+              version: 'latest',
               arch: process.arch,
               baseURL: 'https://github.com/mozilla/geckodriver/releases/download',
             },
-            chromiumedge: {
-              version: 'latest',
-              arch: process.arch,
-              baseURL: 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver',
-            },
+            // chromiumedge: {
+            //   version: 'latest',
+            //   arch: process.arch,
+            //   baseURL: 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver',
+            // },
           },
         },
       }]],

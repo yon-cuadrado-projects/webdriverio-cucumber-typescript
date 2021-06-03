@@ -8,7 +8,7 @@
     "description": "Example of testing project that includes cucumber-js, page object model, webdriverio and allure",
     "scripts": {
         "test:local:chrome": "wdio ./test/cucumber/configuration/js/local-conf.js --browser=chrome --maxInstances=1",
-        "test:local:chrome:1Test": "TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true TS_NODE_BUILD=true TS_NODE_PROJECT=tsconfig.json TS_NODE_LOG_ERROR=true wdio run ./test/cucumber/configuration/js/local-conf.js --spec \"test/cucumber/features/ClickOnCheckboxes.feature\" --browser=chrome --maxInstances=1",
+        "test:local:chrome:1Test": "wdio run ./test/cucumber/configuration/js/local-conf.js --spec \"test/cucumber/features/actions-in-browser.feature\" --browser=chrome --maxInstances=1",
         "test:generate:steps": "wdio ./test/cucumber/configuration/js/local-conf.js --generateSteps --browser=chrome",
         "getStepsSnippetsWithCucumber": "./node_modules/.bin/cucumber-js --require ./dist/cucumber/pages/**/*.js --format 'snippets' --format-options '{\"snippetInterface\": \"synchronous\" }' --dry-run --no-strict ",
         "update-package-json-dependencies": "npx ncu -u && npm i",
@@ -27,7 +27,7 @@
         "@types/fs-extra": "9.0.11",
         "@types/jquery": "3.5.5",
         "@types/long": "4.0.1",
-        "@types/node": "15.6.2",
+        "@types/node": "15.12.0",
         "@types/reflect-metadata": "0.1.0",
         "@types/yargs": "16.0.3",
         "@typescript-eslint/eslint-plugin": "4.26.0",
