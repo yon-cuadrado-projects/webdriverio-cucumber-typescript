@@ -9,9 +9,7 @@ class CustomCommands {
     }, true );
 
     browser.addCommand( 'waitForClickable', function ( this: WebdriverIO.Element ,ms = 5 ): boolean | void {
-
-      return this.waitForDisplayed( { timeout: <number>ms } );
-      // Return browser.waitForDisplayed(this.element().selector,ms) && browser.waitForEnabled(this.element().selector,ms);
+      return this.waitForDisplayed( ms ) && this.waitForEnabled( ms );
     }, true );
 
     browser.addCommand( 'waitForNotVisible', function ( this: WebdriverIO.Element, ms = 0 ): boolean | void {

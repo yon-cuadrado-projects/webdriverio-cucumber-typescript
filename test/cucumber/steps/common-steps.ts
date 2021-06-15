@@ -5,10 +5,6 @@ import { IBasePage } from '../models/base-page';
 import { container } from 'tsyringe';
 import { expect } from 'chai';
 
-// Given( 'The user navigates to the page {string}', function ( url: string ) {
-//   new BasePage().navigateToUrl( url );
-// } );
-
 Given( /^The user navigates to the page '(.*)'$/, ( url: string ) => {
   new BasePage().navigateToUrl( url );
 } );

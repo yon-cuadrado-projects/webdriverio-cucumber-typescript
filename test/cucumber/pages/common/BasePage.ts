@@ -32,9 +32,3 @@ export class BasePage {
     return this.getCheckBox( checkboxLabel ).parentElement().getAttribute( 'class' ) === 'checked' ? 'activated' : 'deactivated';
   }
 }
-
-// export interface PageObject{
-//   mainObject: WebdriverIO.Element;
-//   getCheckboxStatus( checkboxLabel: string ): string;
-//   clickOnCheckbox( checkboxLabel: string, page: string ): void;
-// }
