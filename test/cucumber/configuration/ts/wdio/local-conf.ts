@@ -7,7 +7,7 @@ const argv: CommandLineParameters = yargs.options( {
   browser: { type: 'string', demandOption: false },
   debug: { type: 'boolean', default: false },
   maxInstances: { type: 'number', demandOption: false }
-} ).argv;
+} ).parseSync();
 
 config.capabilities = [
   {
