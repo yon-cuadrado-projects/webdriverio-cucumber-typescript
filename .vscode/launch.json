@@ -35,7 +35,7 @@
                 // "${workspaceFolder}/test/cucumber/configuration/js/local-conf.js",
                 // "${workspaceFolder}/test/cucumber/configuration/ts/local-conf.ts",
                 "--spec",
-                "test/cucumber/features/actions-in-browser.feature",
+                "test/cucumber/features/actions-in-browser.feature:11",
                 "--browser=chrome",
                 "--debug",
                 "--maxInstances=1"

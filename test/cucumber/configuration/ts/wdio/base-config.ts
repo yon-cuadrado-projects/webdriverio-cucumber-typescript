@@ -1,7 +1,8 @@
 import 'reflect-metadata';
+import CucumberJsJsonReporter from 'wdio-cucumberjs-json-reporter-with-typescript-reporter';
 import { CustomCommands } from '../../../custom-commands/custom-commands';
 import Frameworks from '@wdio/types';
-import { LoadContainer } from '../container/container';
+import { registerPagesInContainer } from '../container/container';
 import { messages } from 'cucumber-messages';
 import path from 'path';
 import Pickle = messages.Pickle;
@@ -10,7 +11,7 @@ import IPickleStep = Pickle.IPickleStep;
 
 
 // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
-const CucumberJsJsonReporter = require( 'wdio-cucumberjs-json-reporter' ).default;
+// const CucumberJsJsonReporter = require( 'wdio-cucumberjs-json-reporter' ).default;
 
 
 
@@ -229,7 +230,7 @@ const config: WebdriverIO.Config = {
     // Browser.timeouts('implicit', 1000);
 
     new CustomCommands().createCutomCommands();
-    new LoadContainer();
+    registerPagesInContainer();
   },
   /**
    * Hook that gets executed before the suite starts
@@ -351,6 +352,7 @@ const config: WebdriverIO.Config = {
       {
         logPath: './.tmp/',
         installArgs: {
+          version:'4.0.0-beta-2',
           drivers: {
             chrome: {
               version: 'latest',
@@ -370,7 +372,7 @@ const config: WebdriverIO.Config = {
           },
         },
         args: {
-          version: '3.141.59',
+          version: '4.0.0-beta-2',
           // baseURL: 'https://selenium-release.storage.googleapis.com',
           drivers: {
             chrome: {
