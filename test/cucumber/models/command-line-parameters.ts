@@ -1,8 +1,8 @@
 export default interface CommandLineParameters {
   [x: string]: unknown;
-  _: ( string | number )[];
+  _: ( number | string )[];
   $0: string;
-  browser: string;
+  browser?: string;
   debug: boolean;
-  maxInstances: number;
+  maxInstances?: number;
 }

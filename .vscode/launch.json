@@ -31,7 +31,7 @@
             // "smartStep": true,
             "args": [
                 // "run",
-                "${workspaceFolder}/test/cucumber/configuration/js/local-conf.js",
+                "${workspaceFolder}/test/cucumber/configuration/local-conf.js",
                 // "${workspaceFolder}/test/cucumber/configuration/js/local-conf.js",
                 // "${workspaceFolder}/test/cucumber/configuration/ts/local-conf.ts",
                 "--spec",

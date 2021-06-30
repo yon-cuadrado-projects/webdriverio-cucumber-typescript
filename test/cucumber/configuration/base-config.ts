@@ -1,10 +1,9 @@
 import 'reflect-metadata';
-import CucumberJsJsonReporter from 'wdio-cucumberjs-json-reporter-with-typescript-reporter';
-import { CustomCommands } from '../../../custom-commands/custom-commands';
-import Frameworks from '@wdio/types';
-import { registerPagesInContainer } from '../container/container';
+// import CucumberJsJsonReporter from 'wdio-cucumberjs-json-reporter-with-typescript-reporter';
+import { CustomCommands } from '../custom-commands/custom-commands';
+import type Frameworks from '@wdio/types';
 import { messages } from 'cucumber-messages';
-import path from 'path';
+import { registerPagesInContainer } from '../container/container';
 import Pickle = messages.Pickle;
 import IPickle = messages.IPickle;
 import IPickleStep = Pickle.IPickleStep;
@@ -39,7 +38,7 @@ const config: WebdriverIO.Config = {
   // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
   // Directory is where your package.json resides, so `wdio` will be called from there.
   //
-  specs: ['test/cucumber/features/*.feature'],
+  specs: [ 'test/cucumber/features/*.feature' ],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -171,7 +170,7 @@ const config: WebdriverIO.Config = {
   // },
   cucumberOpts: {
     snippetSyntax: '',
-    require: ['./test/cucumber/steps/*.ts'], // <string[]> (file/dir) require files before executing features
+    require: [ './test/cucumber/steps/**/*.ts' ], // <string[]> (file/dir) require files before executing features
     backtrace: true, // <boolean> show full backtrace for errors
     // Compiler: ['js:babel-register'], // <string[]> ("extension:module") require files with the given
     failFast: false, // <boolean> abort the run on first failure
@@ -322,8 +321,8 @@ const config: WebdriverIO.Config = {
    * @param {Object} exitCode 0 - success, 1 - fail
    */
   onComplete: async (): Promise<void> => {
-    console.log( 'Test message' );
-    process.argv[2] = process.cwd() + '/.tmp/Results';
+    //     console.log( 'Test message' );
+    process.argv[2] = `${process.cwd() }/.tmp/Results`;
     process.argv[3] = 'results-*';
     // console.log( 'baseConfig' + process.argv );
     // mergeResults( process.cwd() + '/.tmp/Results', 'wdio-json-*' );
@@ -337,7 +336,7 @@ const config: WebdriverIO.Config = {
   afterStep: ( step: IPickleStep, scenario: IPickle, result: Frameworks.Frameworks.PickleResult ): void => {
     // If test fail save the screenshot.
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-    CucumberJsJsonReporter.attach( browser.takeScreenshot(), 'image/png' );
+    //     CucumberJsJsonReporter.attach( browser.takeScreenshot(), 'image/png' );
     // if ( typeof result.error != 'undefined' ) {
     //   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     //   // const screenshotLocation = process.cwd() + '/.tmp/screenshots/scenario- ' + <string>step?.step.scenario.name + ' step- ' + <string>step.step.text + '.png';
@@ -392,7 +391,7 @@ const config: WebdriverIO.Config = {
             // },
           },
         },
-      }]],
+      } ] ],
 };
 
 export { config };

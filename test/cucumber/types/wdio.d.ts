@@ -1,22 +1,13 @@
-import { Params } from '../configuration/ts/models/wddio-conf-additional-properties';
+import type { Params } from '../models/wdio-conf-additional-properties';
 
 export {};
 declare global {
   namespace WebdriverIO {
-  // import( './ConfigurationData' ); // Don't delete this line.
-  // import { User } from './user';
-  // Adding command to `browser`
-
-    // interface Options.WebdriverIO{
-    //   Params: Params;
-    // }
     interface Browser {
       browserCustomCommand: ( arg: string ) => void;
       config: Config;
       params: Params;
       destUrl: string;
-      // options: {
-      // };
     }
 
     interface Element {
@@ -26,14 +17,15 @@ declare global {
       // waitForDisplayed: ( timeout: number ) => boolean;
       GetWebElementLineNumbers: () => void;
       hoverAndClick: () => void;
-      WaitUntilCheckIsEnabled( result: boolean, timeout: number ): () => void;
-      getCheckboxStatus( checkboxLabel: string ): string;
-      getCheckBox ( label: string ): WebdriverIO.Element;
-      clickOnCheckbox( checkboxLabel: string, page: string ): void;
+      WaitUntilCheckIsEnabled: ( result: boolean, timeout: number ) => void;
+      getCheckboxStatus: ( checkboxLabel: string ) => string;
+      getCheckBox: ( label: string ) => Element;
+      clickOnCheckbox: ( checkboxLabel: string, page: string ) => void;
     }
 
     interface Config {
       params?: Params;
+
     }
   }
 }

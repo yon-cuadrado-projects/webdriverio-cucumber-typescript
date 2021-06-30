@@ -1,6 +1,6 @@
-import CommandLineParameters from '../models/command-line-parameters';
+import type CommandLineParameters from '../models/command-line-parameters';
 import { config } from './base-config';
-import { configurationParameters } from '../data/configuration-data';
+import { configurationParameters } from './configuration-data';
 import yargs from 'yargs';
 
 const argv: CommandLineParameters = yargs.options( {
@@ -15,11 +15,11 @@ config.capabilities = [
   }
 ];
 
-if ( argv.debug !== false ) {
-  config.execArgv = ['--inspect-brk'];
+if ( argv.debug ) {
+  config.execArgv = [ '--inspect-brk' ];
 }
 
-if ( argv?.browser === 'chrome' ) {
+if ( argv.browser === 'chrome' ) {
 
   config.capabilities = [
     {
@@ -28,13 +28,13 @@ if ( argv?.browser === 'chrome' ) {
         // To run chrome headless the following flags are required
         // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
         // Args: ['--headless', '--disable-gpu'],
-        args: ['disable-infobars'],
+        args: [ 'disable-infobars' ],
       },
     },
   ];
 }
 
-if ( argv?.browser === 'firefox' ) {
+if ( argv.browser === 'firefox' ) {
   config.capabilities = [
     {
       // MaxInstances can get overwritten per capability. So if you have an in house Selenium
@@ -42,7 +42,7 @@ if ( argv?.browser === 'firefox' ) {
       // 5 instance gets started at a time.
       maxInstances: 5,
       browserName: 'firefox',
-      specs: ['test/ffOnly/*'],
+      specs: [ 'test/ffOnly/*' ],
       'moz:firefoxOptions': {
         // Flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
         // Args: ['-headless']
@@ -55,16 +55,16 @@ if ( argv?.browser === 'firefox' ) {
   ];
 }
 
-if ( typeof argv.generateSteps != 'undefined' ) {
+if ( typeof argv.generateSteps !== 'undefined' ) {
   config.cucumberOpts = {
     snippets: false,
     ignoreUndefinedDefinitions: false,
-    requireModule: ['tsconfig-paths/register'],
-    require: ['./test/cucumber/step-definitions/*.ts'], // <string[]> (file/dir) require files before executing features
+    requireModule: [ 'tsconfig-paths/register' ],
+    require: [ './test/cucumber/step-definitions/*.ts' ], // <string[]> (file/dir) require files before executing features
   };
 }
 
-if ( typeof argv.maxInstances != 'undefined' ) {
+if ( typeof argv.maxInstances !== 'undefined' ) {
   config.maxInstances = argv.maxInstances;
 }
 

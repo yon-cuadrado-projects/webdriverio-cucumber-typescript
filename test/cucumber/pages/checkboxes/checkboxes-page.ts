@@ -1,4 +1,4 @@
-import { BasePage } from '../common/BasePage';
+import { BasePage } from '../common/base-page';
 import { injectable } from 'tsyringe';
 
 @injectable()
@@ -10,8 +10,6 @@ export class CheckboxesPage extends BasePage{
   public constructor( ) {
     super( CheckboxesPage.mainObjectXpath );
   }
-
-
 
   public SetSearchBoxText( searchText: string ): void{
     this.searchBox.setValue( searchText );

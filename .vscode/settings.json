@@ -7,7 +7,7 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/node_modules": true,
-    "**/dist": true
+    // "**/dist": true
   },
   "editor.tabSize": 6,
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
@@ -40,7 +40,7 @@
   },
 
   "cucumberautocomplete.steps": [
-      "test/cucumber/steps/*.ts"
+      "test/cucumber/steps/**/*.ts"
   ],
   "cucumberautocomplete.syncfeatures": "test/cucumber/features/*feature",
   "cucumberautocomplete.strictGherkinCompletion": true,
