@@ -4,18 +4,26 @@ import { injectable } from 'tsyringe';
 @injectable()
 export class CheckboxesPage extends BasePage{
   public static mainObjectXpath = ".//*[@id='page']";
-  public searchBox: WebdriverIO.Element = $( ".//*[@id='search_query_top']" );
-  public searchBoxMagnifierGlassButton: WebdriverIO.Element = $( ".//*[@name='submit_search']" );
 
   public constructor( ) {
     super( CheckboxesPage.mainObjectXpath );
   }
 
-  public SetSearchBoxText( searchText: string ): void{
-    this.searchBox.setValue( searchText );
+  public async getSearchBox(): Promise<WebdriverIO.Element>{
+    return $( ".//*[@id='search_query_top']" );
   }
 
-  public ClickOnMagnifierGlassButton(): void{
-    this.searchBox.click();
+  public async getSearchBoxMagnifierGlassButton(): Promise<WebdriverIO.Element>{
+    return $( ".//*[@name='submit_search']" );
+  }
+
+  public async SetSearchBoxText( searchText: string ): Promise<void>{
+    const searchBox = await this.getSearchBox();
+    await searchBox.setValue( searchText );
+  }
+
+  public async ClickOnMagnifierGlassButton(): Promise<void>{
+    const searchBoxMagnifierGlassButton = await this.getSearchBoxMagnifierGlassButton();
+    await searchBoxMagnifierGlassButton.click();
   }
 }

@@ -12,11 +12,28 @@ const argv: CommandLineParameters = yargs.options( {
 config.capabilities = [
   {
     platform: 'ANY',
-  }
+  },
 ];
 
+config.cucumberOpts = {
+//   snippetSyntax: '',
+  require: [ './test/cucumber/steps/**/*.ts' ],
+  backtrace: true,
+  failFast: false,
+  snippets: false,
+  source: true,
+  profile: [],
+  strict: true,
+  tagsInTitle: true,
+  timeout: 500000,
+  ignoreUndefinedDefinitions: false,
+  failAmbiguousDefinitions: true
+};
+
+config.specs = [ 'test/e2e/features/*.feature' ];
+
 if ( argv.debug ) {
-  config.execArgv = [ '--inspect-brk' ];
+  config.execArgv = [ '--inspect' ];
 }
 
 if ( argv.browser === 'chrome' ) {
@@ -59,7 +76,6 @@ if ( typeof argv.generateSteps !== 'undefined' ) {
   config.cucumberOpts = {
     snippets: false,
     ignoreUndefinedDefinitions: false,
-    requireModule: [ 'tsconfig-paths/register' ],
     require: [ './test/cucumber/step-definitions/*.ts' ], // <string[]> (file/dir) require files before executing features
   };
 }

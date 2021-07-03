@@ -1,34 +1,34 @@
 class CustomCommands {
   public createCutomCommands (): void {
-    browser.addCommand( 'getCheckBox', function ( this: WebdriverIO.Element, checkboxLabel: string ) {
+    browser.addCommand( 'getCheckBox', async function ( this: WebdriverIO.Element, checkboxLabel: string ) {
       return this.$( `.//*[.='${checkboxLabel}']/../..//input` );
     }, true );
 
-    browser.addCommand( 'getCheckBoxStatus', function ( this: WebdriverIO.Element, checkboxLabel: string ) {
-      this.getCheckBox( checkboxLabel ).click();
+    browser.addCommand( 'getCheckBoxStatus', async function ( this: WebdriverIO.Element, checkboxLabel: string ) {
+      await this.getCheckBox( checkboxLabel ).click();
     }, true );
 
-    browser.addCommand( 'waitForClickable', function ( this: WebdriverIO.Element ,ms = 5 ): boolean | void {
-      return this.waitForDisplayed( ms ) && this.waitForEnabled( ms );
+    browser.addCommand( 'waitForClickable', async function ( this: WebdriverIO.Element ,ms: number = 5 ): Promise<boolean | void> {
+      return await this.waitForDisplayed( { timeout: ms } ) && this.waitForEnabled( { timeout: ms } );
     }, true );
 
-    browser.addCommand( 'waitForNotVisible', function ( this: WebdriverIO.Element, ms = 0 ): boolean | void {
+    browser.addCommand( 'waitForNotVisible', async function ( this: WebdriverIO.Element, ms = 0 ): Promise<boolean | void> {
       return this.waitForDisplayed( { reverse: true, timeout: <number>ms } );
     }, true );
 
-    browser.addCommand( 'waitUntilIsEnabled', function ( this: WebdriverIO.Element, ms = 0 ): boolean | void {
+    browser.addCommand( 'waitUntilIsEnabled', async function ( this: WebdriverIO.Element, ms = 0 ): Promise<boolean | void> {
       return this.waitForDisplayed( { reverse: false, timeout: <number>ms } );
     }, true );
 
-    browser.addCommand( 'waitForNotExist', function ( this: WebdriverIO.Element, ms = 0 ): boolean | void {
+    browser.addCommand( 'waitForNotExist', async function ( this: WebdriverIO.Element, ms = 0 ): Promise<boolean | void> {
       return this.waitForExist( { reverse: false, timeout: <number>ms } );
     }, true );
 
     browser.addCommand( 'getRandomInt', ( min: number, max: number ) => Math.floor( Math.random() * ( max - min + 1 ) ) + min );
 
-    browser.addCommand( 'hoverAndClick', function ( this: WebdriverIO.Element ): void {
-      const location = this.getLocation();
-      browser.performActions( [
+    browser.addCommand( 'hoverAndClick', async function ( this: WebdriverIO.Element ): Promise<void> {
+      const location = await this.getLocation();
+      await browser.performActions( [
         {
           actions: [
             { duration: 0, type: 'pointerMove', x: parseInt( location.x.toString(), 10 ), y: location.y },

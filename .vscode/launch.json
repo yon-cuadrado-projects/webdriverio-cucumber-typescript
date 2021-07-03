@@ -6,10 +6,6 @@
     "configurations": [
         {
             // "sourceMaps": true,
-            // "resolveSourceMapLocations": [
-            //     "${workspaceFolder}/**",
-            //     "!**/node_modules/**"
-            // ],
             // "type": "pwa-node",
             "type": "node",
             "request": "launch",
@@ -23,7 +19,7 @@
             // "windows": {
             //     "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/wdio.cmd"
             // },
-            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+            "outFiles": ["${workspaceFolder}/dist/**/**/*.js"],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             // "outputCapture": "std",
@@ -41,6 +37,7 @@
                 "--maxInstances=1"
             ],
             "skipFiles": [
+                "${workspaceFolder}/dist/**/**/*.js",
                 "<node_internals>/**",
                 "node_modules/**"
               ],

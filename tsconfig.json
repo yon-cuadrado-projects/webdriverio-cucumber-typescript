@@ -24,7 +24,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "baseUrl": ".",
-        "types": ["node", "webdriverio/sync", "@wdio/cucumber-framework", "@wdio/selenium-standalone-service","@types/fs-extra", "long"],
+        "types": ["node", "webdriverio/async", "@wdio/cucumber-framework","@types/fs-extra", "long"],
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "experimentalDecorators": true,
