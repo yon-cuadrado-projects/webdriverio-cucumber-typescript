@@ -11,19 +11,13 @@
             //     "!**/node_modules/**"
             // ],
             // "type": "pwa-node",
+            "name": "Launch wdio typescript",
             "type": "node",
             "request": "launch",
-            "name": "Launch wdio typescript",
             "timeout": 60000,
-            // "protocol": "inspector",
-            // "port": 5859,
             "autoAttachChildProcesses": true,
             "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
-            // "runtimeExecutable":"${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
-            // "windows": {
-            //     "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/wdio.cmd"
-            // },
-            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+            "outFiles": ["${workspaceFolder}/dist/**/**/**/**/*.js"],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             // "outputCapture": "std",

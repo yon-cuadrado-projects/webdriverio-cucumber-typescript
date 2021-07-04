@@ -1,32 +1,52 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
+        // "alwaysStrict": true,
+        // "noImplicitReturns": true,
+        // "noFallthroughCasesInSwitch": true,
+        // "allowUnreachableCode": false,
+        // "allowUnusedLabels": false,
+        // "strict": true,        
+        // "forceConsistentCasingInFileNames": true,
+        // "noUnusedLocals": true,
+        // "strictNullChecks": true,
+        // "noImplicitAny" : true,
+        // "preserveSymlinks": true,
+        // "allowJs": true,
+        // "sourceMap": true,
+        // "declaration": true,
+        // "declarationMap": true,
+        // "inlineSources": true,
+        // "rootDir": "./",
         "outDir": "./dist",
         "sourceMap": false,
-        "target": "ES2020",
+        "target": "es2019",
         "module": "commonjs",
         "removeComments": true,
+        // "moduleResolution": "node",
+        // "baseUrl": ".",
         "noImplicitAny": true,
         "strictPropertyInitialization": true,
         "strictNullChecks": true,
-        "types": ["node", "webdriverio/sync", "@wdio/cucumber-framework", "@wdio/selenium-standalone-service","@types/fs-extra", "long"],
-        // "strict": true,
-        "preserveSymlinks": true,
-        "allowJs": true,
-        "resolveJsonModule": true,
-        "typeRoots": ["./node_modules/@types","./test/cucumber/types" ],
+        "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "experimentalDecorators": true,
-        // "rootDir": "test",
-        // "moduleResolution": "node",
-        // "baseUrl": ".",
-        // "allowSyntheticDefaultImports": true,
-        // "emitDecoratorMetadata": true,
-        // "forceConsistentCasingInFileNames": true
+        "emitDecoratorMetadata": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./test/cucumber/types"
+        ],
+        "types": [
+            "node",
+            "webdriverio/sync",
+            "@wdio/cucumber-framework",
+            "@wdio/selenium-standalone-service",
+            "@types/fs-extra",
+            "long"
+        ],
+        "resolveJsonModule": true,
     },
     "include": [
-        "**/*.ts",
-        "**/**/*.ts",
-        "**/**/**/*.ts"
+        "**/**/**/**/*.ts"
     ]
 }
