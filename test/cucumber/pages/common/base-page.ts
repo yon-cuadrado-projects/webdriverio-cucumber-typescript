@@ -1,5 +1,5 @@
 
-import type { Urls } from 'test/cucumber/models/wdio-conf-additional-properties';
+import type { Urls } from '../../models/wdio-conf-additional-properties';
 export class BasePage {
   public mainObjectXpath: string | undefined;
   public mainObject: WebdriverIO.Element | null;
@@ -14,7 +14,7 @@ export class BasePage {
   }
 
   public getUrl ( url: keyof Urls ): string {
-    const urlFromData = browser.config.params?.urls[url];
+    const urlFromData =  browser.config.params?.urls?.[url];
     if( typeof urlFromData === 'undefined' ){
       return '';
     }
