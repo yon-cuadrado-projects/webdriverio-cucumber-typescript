@@ -14,6 +14,7 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "args": [
+                "${workspaceFolder}/test/cucumber/configuration/local-conf.js",
                 "--spec",
                 "test/cucumber/features/actions-in-browser.feature:11",
                 "--browser=chrome",
@@ -21,6 +22,7 @@
                 "--maxInstances=1"
             ],
             "skipFiles": [
+                "${workspaceFolder}/dist/**/**/*.js",
                 "<node_internals>/**",
                 "node_modules/**"
               ]

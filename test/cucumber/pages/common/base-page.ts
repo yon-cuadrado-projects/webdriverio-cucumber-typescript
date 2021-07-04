@@ -1,16 +1,15 @@
-
 import type { Urls } from '../../models/wdio-conf-additional-properties';
+
 export class BasePage {
   public mainObjectXpath: string | undefined;
-  public mainObject: WebdriverIO.Element | null;
 
   public constructor( mainObjectXpath?: string ) {
+    console.log( mainObjectXpath );
     this.mainObjectXpath = mainObjectXpath;
-    this.mainObject = mainObjectXpath ? $( mainObjectXpath ) : null;
   }
 
-  public navigateToUrl ( url: keyof Urls ): void {
-    browser.url( this.getUrl( url ) );
+  public async navigateToUrl ( url: keyof Urls ): Promise<void> {
+    await browser.url( this.getUrl(url) );
   }
 
   public getUrl ( url: keyof Urls ): string {
@@ -21,15 +20,19 @@ export class BasePage {
     return urlFromData;
   }
 
-  public clickOnCheckbox( checkboxLabel: string ): void{
-    this.getCheckBox( checkboxLabel )?.click();
+  public async clickOnCheckbox( checkboxLabel: string ): Promise<void>{
+    ( await this.getCheckBox( checkboxLabel ) )?.click();
   }
 
-  public getCheckBox ( label: string ): WebdriverIO.Element | undefined{
-    return this.mainObject?.$( `.//*[.='${label}']/../..//input` );
+  public async getCheckBox ( label: string ): Promise<WebdriverIO.Element | undefined> {
+    const mainObject = await $( this.mainObjectXpath ?? '' );
+    return mainObject.$( `.//*[.='${label}']/../..//input` );
+    // return checkbox;
   }
 
-  public getCheckboxStatus ( checkboxLabel: string ): string {
-    return this.getCheckBox( checkboxLabel )?.parentElement().getAttribute( 'class' ) === 'checked' ? 'activated' : 'deactivated';
+  public async getCheckboxStatus ( checkboxLabel: string ): Promise<string> {
+    const checkbox = await this.getCheckBox( checkboxLabel );
+    const checkboxParentElement = await checkbox?.parentElement();
+    return await checkboxParentElement?.getAttribute( 'class' ) === 'checked' ? 'activated' : 'deactivated';
   }
 }

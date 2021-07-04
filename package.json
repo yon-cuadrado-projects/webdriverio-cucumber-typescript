@@ -42,7 +42,6 @@
         "@wdio/mocha-framework": "7.7.4",
         "@wdio/selenium-standalone-service": "7.7.4",
         "@wdio/spec-reporter": "7.7.3",
-        "@wdio/sync": "7.7.4",
         "@wdio/types": "7.7.3",
         "axios": "0.21.1",
         "chai": "4.3.4",
@@ -88,7 +87,7 @@
         "typescript-tslint-plugin": "1.0.1",
         "wdio-allure-reporter": "0.8.3",
         "wdio-cucumberjs-json-reporter": "4.0.0",
-        "wdio-cucumberjs-json-reporter-with-typescript-reporter": "^3.0.8",
+        "wdio-cucumberjs-json-reporter-with-typescript-reporter": "3.0.8",
         "wdio-json-reporter": "2.0.0",
         "webdriverio": "7.7.4",
         "yargs": "^17.0.1"

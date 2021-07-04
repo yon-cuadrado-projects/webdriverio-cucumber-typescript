@@ -28,6 +28,8 @@
         "noImplicitAny": true,
         "strictPropertyInitialization": true,
         "strictNullChecks": true,
+        "moduleResolution": "node",
+        "baseUrl": ".",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "experimentalDecorators": true,
@@ -38,7 +40,7 @@
         ],
         "types": [
             "node",
-            "webdriverio/sync",
+            "webdriverio/async",
             "@wdio/cucumber-framework",
             "@wdio/selenium-standalone-service",
             "@types/fs-extra",
@@ -46,7 +48,7 @@
         ],
         "resolveJsonModule": true,
     },
-    "include": [
-        "**/**/**/**/*.ts"
-    ]
+    // "include": [
+    //     "**/**/**/**/*.ts"
+    // ]
 }

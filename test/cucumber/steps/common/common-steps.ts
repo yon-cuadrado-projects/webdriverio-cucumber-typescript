@@ -5,17 +5,18 @@ import type { Urls } from '../../models/wdio-conf-additional-properties';
 import { container } from 'tsyringe';
 import { expect } from 'chai';
 
-Given( /^The user navigates to the page '(.*)'$/, ( url: keyof Urls ) => {
+Given( /^The user navigates to the page '(.*)'$/, async ( url: keyof Urls ) => {
   const commonPage = container.resolve( CommonPage );
-  commonPage.navigateToUrl( url );
+  await commonPage.navigateToUrl( url );
 } );
 
-When( /^The user clicks on the checkbox '(.*)' of the '(.*)' page$/, ( checkboxLabel: string, pageName: string ) =>{
+When( /^The user clicks on the checkbox '(.*)' of the '(.*)' page$/, async ( checkboxLabel: string, pageName: string ) =>{
   const pageObject = container.resolve<CheckboxesPage>( pageName );
-  pageObject.clickOnCheckbox( checkboxLabel );
+  await pageObject.clickOnCheckbox( checkboxLabel );
 } );
 
-Then( /^The page displays the checkbox '(.*)' '(.*)' of the '(.*)' page$/, ( checkboxLabel: string, state: string, pageName: string ) =>{
+Then( /^The page displays the checkbox '(.*)' '(.*)' of the '(.*)' page$/, async ( checkboxLabel: string, state: string, pageName: string ) =>{
   const pageObject = container.resolve<CheckboxesPage>( pageName );
-  expect( pageObject.getCheckboxStatus( checkboxLabel ) ).to.be.equal( state );
+  const checkboxStatus = await pageObject.getCheckboxStatus( checkboxLabel );
+  expect( checkboxStatus).to.be.equal( state );
 } );
