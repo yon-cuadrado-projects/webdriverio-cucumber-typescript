@@ -5,29 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            // "sourceMaps": true,
-            // "resolveSourceMapLocations": [
-            //     "${workspaceFolder}/**",
-            //     "!**/node_modules/**"
-            // ],
-            // "type": "pwa-node",
             "name": "Launch wdio typescript",
             "type": "node",
             "request": "launch",
             "timeout": 60000,
             "autoAttachChildProcesses": true,
             "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
-            "outFiles": ["${workspaceFolder}/dist/**/**/**/**/*.js"],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
-            // "outputCapture": "std",
-            // "envFile":"${workspaceRoot}/webdriverio.env",
-            // "smartStep": true,
             "args": [
-                // "run",
-                "${workspaceFolder}/test/cucumber/configuration/local-conf.js",
-                // "${workspaceFolder}/test/cucumber/configuration/js/local-conf.js",
-                // "${workspaceFolder}/test/cucumber/configuration/ts/local-conf.ts",
                 "--spec",
                 "test/cucumber/features/actions-in-browser.feature:11",
                 "--browser=chrome",
@@ -37,15 +23,7 @@
             "skipFiles": [
                 "<node_internals>/**",
                 "node_modules/**"
-              ],
-            // "disableOptimisticBPs": true,
-            // "env": { 
-            //     "DEBUG": "1" 
-            //     // use an environment variable to be able 
-            //     // to toggle debug mode on and off 
-            //   }
-
-            
+              ]
         }
     ]
 }
