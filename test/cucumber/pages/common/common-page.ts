@@ -1,7 +1,7 @@
 import { BasePage } from './base-page';
-import { injectable } from 'tsyringe';
+import { autoInjectable } from 'tsyringe';
 
-@injectable()
+@autoInjectable()
 export class CommonPage extends BasePage{
   public static mainObjectXpath = ".//*[@id='page']";
   public constructor( ) {

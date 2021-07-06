@@ -1,15 +1,13 @@
 import type { Urls } from '../../models/wdio-conf-additional-properties';
-
 export class BasePage {
   public mainObjectXpath: string | undefined;
 
   public constructor( mainObjectXpath?: string ) {
-    console.log( mainObjectXpath );
     this.mainObjectXpath = mainObjectXpath;
   }
 
   public async navigateToUrl ( url: keyof Urls ): Promise<void> {
-    await browser.url( this.getUrl(url) );
+    await browser.url( this.getUrl( url ) );
   }
 
   public getUrl ( url: keyof Urls ): string {

@@ -74,7 +74,7 @@ const config: WebdriverIO.Config = {
       console.log( ( <Error>error ).message );
     }
     new CustomCommands().createCutomCommands();
-    registerPagesInContainer();
+//     registerPagesInContainer();
   },
 
   afterStep: async ( ): Promise<void> => {

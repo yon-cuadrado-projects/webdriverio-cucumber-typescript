@@ -1,7 +1,7 @@
 import { BasePage } from '../common/base-page';
-import { injectable } from 'tsyringe';
+import { autoInjectable } from 'tsyringe';
 
-@injectable()
+@autoInjectable()
 export class CheckboxesPage extends BasePage{
   public static mainObjectXpath = ".//*[@id='page']";
 

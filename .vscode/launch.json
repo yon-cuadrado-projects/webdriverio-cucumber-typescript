@@ -13,6 +13,7 @@
             "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
+            "smartStep": true,
             "args": [
                 "${workspaceFolder}/test/cucumber/configuration/local-conf.js",
                 "--spec",

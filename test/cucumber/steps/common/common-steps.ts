@@ -18,5 +18,5 @@ When( /^The user clicks on the checkbox '(.*)' of the '(.*)' page$/, async ( che
 Then( /^The page displays the checkbox '(.*)' '(.*)' of the '(.*)' page$/, async ( checkboxLabel: string, state: string, pageName: string ) =>{
   const pageObject = container.resolve<CheckboxesPage>( pageName );
   const checkboxStatus = await pageObject.getCheckboxStatus( checkboxLabel );
-  expect( checkboxStatus).to.be.equal( state );
+  expect( checkboxStatus ).to.be.equal( state );
 } );
