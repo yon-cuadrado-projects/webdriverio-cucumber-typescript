@@ -25,7 +25,6 @@ declare global {
 
     interface Config {
       params?: Params;
-
     }
   }
 }

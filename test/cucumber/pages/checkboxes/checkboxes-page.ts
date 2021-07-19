@@ -9,6 +9,7 @@ export class CheckboxesPage extends BasePage{
     super( CheckboxesPage.mainObjectXpath );
   }
 
+
   public async getSearchBox(): Promise<WebdriverIO.Element>{
     return $( ".//*[@id='search_query_top']" );
   }
