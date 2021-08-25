@@ -2,6 +2,8 @@ import 'reflect-metadata';
 import CucumberJsJsonReporter from 'wdio-cucumberjs-json-reporter';
 import { CustomCommands } from '../custom-commands/custom-commands';
 import { registerPagesInContainer } from '../container/container';
+import {generateReport} from 'cucumber-html-report-generator'
+import path from 'path';
 
 const config: WebdriverIO.Config = {
   autoCompileOpts: {
@@ -81,13 +83,20 @@ const config: WebdriverIO.Config = {
     CucumberJsJsonReporter.attach( await browser.takeScreenshot(), 'image/png' );
   },
 
+  after: async (): Promise<void> => {
+      await generateReport.generate({
+            jsonDir: `${path.resolve( './' )}/.tmp`,
+            openReportInBrowser: true
+      })
+  },
+
   services: [
     [
       'selenium-standalone',
       {
         logPath: './.tmp/',
         installArgs: {
-          version: '4.0.0-beta-2',
+          version: '4.0.0-beta-4',
           drivers: {
             chrome: {
               version: 'latest',
@@ -107,7 +116,7 @@ const config: WebdriverIO.Config = {
           },
         },
         args: {
-          version: '4.0.0-beta-2',
+          version: '4.0.0-beta-4',
           drivers: {
             chrome: {
               version: 'latest',
