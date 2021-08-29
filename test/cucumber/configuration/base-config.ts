@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import CucumberJsJsonReporter from 'wdio-cucumberjs-json-reporter';
+import CucumberJsJsonReporter from 'wdio-cucumberjs-json-reporter-with-typescript';
 import { CustomCommands } from '../custom-commands/custom-commands';
 import { registerPagesInContainer } from '../container/container';
 import {generateReport} from 'cucumber-html-report-generator'
@@ -50,7 +50,7 @@ const config: WebdriverIO.Config = {
   framework: 'cucumber',
   reporters: [
     [
-      'cucumberjs-json',
+      CucumberJsJsonReporter,
       {
         jsonFolder: '.tmp/cucumberjs-json/',
         language: 'en',
@@ -85,7 +85,7 @@ const config: WebdriverIO.Config = {
 
   after: async (): Promise<void> => {
       await generateReport.generate({
-            jsonDir: `${path.resolve( './' )}/.tmp`,
+            jsonDir: `${path.resolve( './' )}/.tmp/cucumberjs-json/`,
             openReportInBrowser: true
       })
   },
