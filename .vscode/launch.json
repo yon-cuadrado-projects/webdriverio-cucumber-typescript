@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch wdio typescript",
+            "name": "run webdriverio tests",
             "type": "node",
             "request": "launch",
             "timeout": 60000,

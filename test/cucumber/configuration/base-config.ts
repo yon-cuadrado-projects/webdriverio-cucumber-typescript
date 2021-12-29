@@ -2,8 +2,10 @@ import 'reflect-metadata';
 import CucumberJsJsonReporter from 'wdio-cucumberjs-json-reporter-with-typescript';
 import { CustomCommands } from '../custom-commands/custom-commands';
 import { registerPagesInContainer } from '../container/container';
-import {generateReport} from 'cucumber-html-report-generator'
+import { generateReport } from 'cucumber-html-report-generator';
+import CucumberHtmlReporter from 'wdio-reporter-html';
 import path from 'path';
+const rootPath = path.join( path.dirname( require.resolve( `./base-config.ts` ) ), '../../../' );
 
 const config: WebdriverIO.Config = {
   autoCompileOpts: {
@@ -50,9 +52,9 @@ const config: WebdriverIO.Config = {
   framework: 'cucumber',
   reporters: [
     [
-      CucumberJsJsonReporter,
+      CucumberHtmlReporter,
       {
-        jsonFolder: '.tmp/cucumberjs-json/',
+        outputDir: path.join(rootPath, '.tmp/cucumberjs-json/'),
         language: 'en',
       },
     ],
@@ -83,9 +85,9 @@ const config: WebdriverIO.Config = {
     CucumberJsJsonReporter.attach( await browser.takeScreenshot(), 'image/png' );
   },
 
-  after: async (): Promise<void> => {
+  onComplete: async (): Promise<void> => {     
       await generateReport.generate({
-            jsonDir: `${path.resolve( './' )}/.tmp/cucumberjs-json/`,
+            jsonDir: path.join(rootPath, '/.tmp/cucumberjs-json/'),
             openReportInBrowser: true
       })
   },
@@ -96,7 +98,7 @@ const config: WebdriverIO.Config = {
       {
         logPath: './.tmp/',
         installArgs: {
-          version: '4.0.0-beta-4',
+          version: '4.1.0',
           drivers: {
             chrome: {
               version: 'latest',
@@ -111,12 +113,12 @@ const config: WebdriverIO.Config = {
             chromiumedge: {
               version: 'latest',
               arch: process.arch,
-              baseURL: 'http://selenium-release.storage.googleapis.com/',
+              baseURL: 'https://msedgedriver.azureedge.net/',
             },
           },
         },
         args: {
-          version: '4.0.0-beta-4',
+          version: '4.1.0',
           drivers: {
             chrome: {
               version: 'latest',
@@ -131,7 +133,7 @@ const config: WebdriverIO.Config = {
             chromiumedge: {
               version: 'latest',
               arch: process.arch,
-              baseURL: 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver',
+              baseURL: 'https://msedgedriver.azureedge.net/',
             },
           },
         },
