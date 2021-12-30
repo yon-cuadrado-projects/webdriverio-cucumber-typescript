@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-import CucumberJsJsonReporter from 'wdio-cucumberjs-json-reporter-with-typescript';
 import { CustomCommands } from '../custom-commands/custom-commands';
 import { registerPagesInContainer } from '../container/container';
 import { generateReport } from 'cucumber-html-report-generator';
@@ -82,7 +81,7 @@ const config: WebdriverIO.Config = {
   },
 
   afterStep: async ( ): Promise<void> => {
-    CucumberJsJsonReporter.attach( await browser.takeScreenshot(), 'image/png' );
+      CucumberHtmlReporter.attach( await browser.takeScreenshot(), 'image/png' );
   },
 
   onComplete: async (): Promise<void> => {     
