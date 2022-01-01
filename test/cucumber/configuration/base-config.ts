@@ -87,7 +87,10 @@ const config: WebdriverIO.Config = {
   onComplete: async (): Promise<void> => {     
       await generateReport.generate({
             jsonDir: path.join(rootPath, '/.tmp/cucumberjs-json/'),
-            openReportInBrowser: true
+            openReportInBrowser: true,
+            mongooseServerUrl:"http://localhost:3000",
+            saveReportInMongoDb: true,
+            saveEnrichedJSON: true
       })
   },
 
@@ -96,8 +99,10 @@ const config: WebdriverIO.Config = {
       'selenium-standalone',
       {
         logPath: './.tmp/',
+        skipSeleniumInstall: true,
         installArgs: {
           version: '4.1.0',
+          
           drivers: {
             chrome: {
               version: 'latest',
