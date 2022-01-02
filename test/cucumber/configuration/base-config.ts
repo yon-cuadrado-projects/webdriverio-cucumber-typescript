@@ -99,7 +99,7 @@ const config: WebdriverIO.Config = {
       'selenium-standalone',
       {
         logPath: './.tmp/',
-        skipSeleniumInstall: true,
+      //   skipSeleniumInstall: true,
         installArgs: {
           version: '4.1.0',
           
