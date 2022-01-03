@@ -4,7 +4,7 @@ import { registerPagesInContainer } from '../container/container';
 import { generateReport } from 'cucumber-html-report-generator';
 import CucumberHtmlReporter from 'wdio-reporter-html';
 import path from 'path';
-const rootPath = path.join( path.dirname( require.resolve( `./base-config.ts` ) ), '../../../' );
+// const rootPath = path.join( path.dirname( require.resolve( `./base-config.ts` ) ), '../../../' );
 
 const config: WebdriverIO.Config = {
   autoCompileOpts: {
@@ -49,17 +49,17 @@ const config: WebdriverIO.Config = {
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
   framework: 'cucumber',
-  reporters: [
-    [
-      CucumberHtmlReporter,
-      {
-        outputDir: path.join(rootPath, '.tmp/cucumberjs-json/'),
-        language: 'en',
-      },
-    ],
-    'dot',
-    'spec',
-  ],
+//   reporters: [
+//     [
+//       CucumberHtmlReporter,
+//       {
+//         outputDir: path.join(rootPath, '.tmp/cucumberjs-json/'),
+//         language: 'en',
+//       },
+//     ],
+//     'dot',
+//     'spec',
+//   ],
 
   //
   // =====
@@ -84,15 +84,15 @@ const config: WebdriverIO.Config = {
       CucumberHtmlReporter.attach( await browser.takeScreenshot(), 'image/png' );
   },
 
-  onComplete: async (): Promise<void> => {     
-      await generateReport.generate({
-            jsonDir: path.join(rootPath, '/.tmp/cucumberjs-json/'),
-            openReportInBrowser: true,
-            mongooseServerUrl:"http://localhost:3000",
-            saveReportInMongoDb: true,
-            saveEnrichedJSON: true
-      })
-  },
+//   onComplete: async (): Promise<void> => {     
+//       await generateReport.generate({
+//             jsonDir: path.join(rootPath, '/.tmp/cucumberjs-json/'),
+//             openReportInBrowser: true,
+//             mongooseServerUrl:"http://localhost:3000",
+//             saveReportInMongoDb: true,
+//             saveEnrichedJSON: true
+//       })
+//   },
 
   services: [
     [

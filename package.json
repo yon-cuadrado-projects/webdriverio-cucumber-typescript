@@ -8,7 +8,8 @@
     "description": "Example of testing project that includes cucumber-js, page object model, webdriverio and allure",
     "scripts": {
         "test:local:chrome": "wdio ./test/cucumber/configuration/js/local-conf.js --browser=chrome --maxInstances=1",
-        "test:local:chrome:1Test": "wdio run ./test/cucumber/configuration/js/local-conf.js --spec \"test/cucumber/features/actions-in-browser.feature\" --browser=chrome --maxInstances=1",
+        "test:local:chrome:1Test": "wdio run ./test/cucumber/configuration/local-conf.js --spec \"test/cucumber/features/actions-in-browser.feature\" --browser=chrome --maxInstances=1",
+        "test:local:chrome:1TestwithServer": "wdio run ./test/cucumber/configuration/local-conf.js --spec \"test/cucumber/features/actions-in-browser.feature\" --browser=chrome --maxInstances=1 --storeInDatabase=true",
         "test:generate:steps": "wdio ./test/cucumber/configuration/js/local-conf.js --generateSteps --browser=chrome",
         "getStepsSnippetsWithCucumber": "./node_modules/.bin/cucumber-js --format 'snippets' --format-options '{\"snippetInterface\": \"synchronous\" }' --dry-run --no-strict ",
         "update-package-json-dependencies": "npx ncu -u && npm i",
