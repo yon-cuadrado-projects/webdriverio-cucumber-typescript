@@ -5,4 +5,5 @@ export default interface CommandLineParameters {
   browser?: string;
   debug: boolean;
   maxInstances?: number;
+  storeInDatabase?:boolean;
 }
