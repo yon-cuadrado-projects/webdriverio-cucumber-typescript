@@ -4,7 +4,7 @@ export const configurationParameters =
   urls: {
     basicAuth: 'http://the-internet.herokuapp.com/basic_auth',
     registerUsers: 'http://newtours.demoaut.com/index.php',
-    CheckboxesPage: 'http://automationpractice.com/index.php?id_category=3&controller=category'
+    checkboxesPage: 'http://automationpractice.com/index.php?id_category=3&controller=category'
   },
   excel: {
     excelColumns: {

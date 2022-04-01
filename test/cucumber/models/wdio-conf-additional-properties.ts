@@ -26,5 +26,5 @@ export interface Params {
 export interface Urls{
   basicAuth: string;
   registerUsers: string;
-  CheckboxesPage: string;
+  checkboxesPage: string;
 }
