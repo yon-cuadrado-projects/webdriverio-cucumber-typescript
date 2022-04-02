@@ -13,7 +13,7 @@ Happy linting! 💖
 */
 module.exports = {
     root: true,
-    "globals":{
+    "globals": {
         "browser": true,
         "$": true,
         "WebdriverIO": true
@@ -43,7 +43,7 @@ module.exports = {
         "@typescript-eslint/tslint",
         "eslint-plugin-prettier"
     ],
-    "rules": {        
+    "rules": {
         "@typescript-eslint/array-type": [
             "error",
             {
@@ -155,50 +155,50 @@ module.exports = {
                 }
             }
         ],
-        "@typescript-eslint/consistent-type-assertions": [ "error", { assertionStyle: "angle-bracket", objectLiteralTypeAssertions: "allow" } ],
-        "@typescript-eslint/naming-convention": ["warn", {format: ['camelCase'],selector: 'variableLike', custom: {regex: 'ObjectId|mime_type', match: false}} ],
-        "@typescript-eslint/require-array-sort-compare": ["warn", {ignoreStringArrays: true} ],
-        "@typescript-eslint/no-misused-promises": ["error",{"checksVoidReturn": false}],
-        "@typescript-eslint/restrict-template-expressions": ["error", {allowBoolean: true }],
-        "autofix/sort-imports": "error",
-        "brace-style": ["error","1tbs"],
+        "@typescript-eslint/consistent-type-assertions": ["error", { assertionStyle: "angle-bracket", objectLiteralTypeAssertions: "allow" }],
+        "@typescript-eslint/naming-convention": ["warn", { format: ['camelCase'], selector: 'variableLike', custom: { regex: 'ObjectId|mime_type', match: false } }],
+        "@typescript-eslint/require-array-sort-compare": ["warn", { ignoreStringArrays: true }],
+        "@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": false }],
+        "@typescript-eslint/restrict-template-expressions": ["error", { allowBoolean: true }],
+        "brace-style": ["error", "1tbs"],
         "object-curly-spacing": ["warn", "always"],
         "array-bracket-spacing": ["warn", "always"],
-        "max-classes-per-file": ["error",1],
-        "max-len": ["error",{"ignorePattern": "\\s*from|class [a-zA-Z]+ implements|\\s*\\* |\\s*// ","code": 240}],
-        "no-console": ["error",{
-                "allow": [
-                    "log",
-                    "warn",
-                    "dir",
-                    "timeLog",
-                    "assert",
-                    "clear",
-                    "count",
-                    "countReset",
-                    "group",
-                    "groupEnd",
-                    "table",
-                    "dirxml",
-                    "error",
-                    "groupCollapsed",
-                    "Console",
-                    "profile",
-                    "profileEnd",
-                    "timeStamp",
-                    "context"
-                ]
-            }
+        "max-classes-per-file": ["error", 1],
+        "max-len": ["error", { "ignorePattern": "\\s*from|class [a-zA-Z]+ implements|\\s*\\* |\\s*// ", "code": 240 }],
+        "no-console": ["error", {
+            "allow": [
+                "log",
+                "warn",
+                "dir",
+                "timeLog",
+                "assert",
+                "clear",
+                "count",
+                "countReset",
+                "group",
+                "groupEnd",
+                "table",
+                "dirxml",
+                "error",
+                "groupCollapsed",
+                "Console",
+                "profile",
+                "profileEnd",
+                "timeStamp",
+                "context"
+            ]
+        }
         ],
-        "no-plusplus": ["error",{"allowForLoopAfterthoughts": true}],
-        "object-curly-spacing": ["error","always",{"objectsInObjects": true}],
-        "one-var": [ "error", "never"],
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+        "object-curly-spacing": ["error", "always", { "objectsInObjects": true }],
+        "one-var": ["error", "never"],
         "prefer-arrow/prefer-arrow-functions": "error",
-        "space-in-parens": [ "error", "always"],
-        "spaced-comment": [ "error", "always", { "markers": [ "/" ]}],
-        "no-underscore-dangle": ["off", {"allow": ["_id", "_model"]}],
+        "space-in-parens": ["error", "always"],
+        "spaced-comment": ["error", "always", { "markers": ["/"] }],
+        "no-underscore-dangle": ["off", { "allow": ["_id", "_model"] }],
         "max-statements": ["error", 21],
-        "camelcase": ["error", {allow: ["mime_type", "not_defined", "error_message"]}],
+        "camelcase": ["error", { allow: ["mime_type", "not_defined", "error_message"] }],
+        "id-length": ["error", { "exceptions": ["x", "y"] }],
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
@@ -208,7 +208,7 @@ module.exports = {
         "@typescript-eslint/lines-between-class-members": "off",
         "@typescript-eslint/no-magic-numbers": "off",
         "@typescript-eslint/require-array-sort-compare": "off",
-        "@typescript-eslint/no-invalid-void-type": "off",     
+        "@typescript-eslint/no-invalid-void-type": "off",
         "multiline-comment-style": "off",
         "prefer-readonly-parameter-types": "off",
         "no-ternary": "off",
@@ -230,19 +230,20 @@ module.exports = {
         "method-signature-style": "off",
         "prefer-named-capture-group": "off",
         "arrow-body-style": "off",
+        "sort-imports": "off"
     },
-    "overrides":[
+    "overrides": [
         {
-            "files": [ "test/cucumber/step-definitions/*.ts" ],
+            "files": ["test/cucumber/step-definitions/*.ts"],
             "excludedFiles": "*.*-steps.ts",
             "rules": {
                 "prefer-arrow/prefer-arrow-functions": ["off"],
             }
         },
         {
-            "files": [ 
-                "test/unit/*.ts", 
-                "src/lib/generate-report/helpers/generate-html.ts", 
+            "files": [
+                "test/unit/*.ts",
+                "src/lib/generate-report/helpers/generate-html.ts",
                 "src/lib/mongoose-report-manager/mongoose-queries.ts"
             ],
             "excludedFiles": "*.*.ts",
@@ -252,8 +253,8 @@ module.exports = {
         },
         {
             "files": ["test/unit/*-spec.ts"],
-            "rules": { 
-                "max-lines-per-function": [ "off"]
+            "rules": {
+                "max-lines-per-function": ["off"]
             }
         },
         {
@@ -261,19 +262,19 @@ module.exports = {
                 "test/e2e/pages/**/*.ts",
                 "test/e2e/steps/**/*.ts"
             ],
-            "rules": {"require-unicode-regexp": ["off"]}
+            "rules": { "require-unicode-regexp": ["off"] }
         },
         {
-            "files":[
-                "test/e2e/custom-commands/custom-commands.ts"
+            "files": [
+                "test/cucumber/custom-commands/custom-commands.ts"
             ],
-            "rules": { "func-names": ["off"]}            
+            "rules": { "func-names": ["off"] }
         },
         {
-            "files":[
-                "test/e2e/custom-commands/custom-commands.ts"
+            "files": [
+                "test/cucumber/pages/common/base-page.ts"
             ],
-            "rules": { "id-length": ["off"]}
+            "rules": { "@typescript-eslint/no-floating-promises": ["off"] }
         }
     ]
 };

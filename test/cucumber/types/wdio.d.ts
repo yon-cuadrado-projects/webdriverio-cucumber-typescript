@@ -1,6 +1,6 @@
 import type { Params } from '../models/wdio-conf-additional-properties';
 
-export {};
+
 declare global {
   namespace WebdriverIO {
     interface Browser {

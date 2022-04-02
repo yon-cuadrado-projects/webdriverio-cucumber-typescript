@@ -93,6 +93,8 @@
         "yargs": "17.4.0"
     },
     "dependencies": {
-        "cd": "0.3.3"
+        "cd": "0.3.3",
+        "eslint-plugin-autofix": "^1.1.0",
+        "save-dev": "^0.0.1-security"
     }
 }

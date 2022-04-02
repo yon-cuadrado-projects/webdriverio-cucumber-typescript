@@ -1,7 +1,7 @@
 import { Before, setDefaultTimeout } from '@cucumber/cucumber';
 
 Before(
-  async (): Promise<void> => {
+  (): void => {
     setDefaultTimeout( 30000 );
   },
 );

@@ -6,7 +6,7 @@ import path from 'path';
 import { generateReport } from 'cucumber-html-report-generator';
 import CucumberHtmlReporter from 'wdio-reporter-html';
 
-const rootPath = path.join( path.dirname( require.resolve( `./base-config.ts` ) ), '../../../' );
+const rootPath = path.join( path.dirname( require.resolve( './base-config.ts' ) ), '../../../' );
 
 const argv: CommandLineParameters = yargs.options( {
   browser: { type: 'string', demandOption: false },
@@ -22,19 +22,19 @@ config.capabilities = [
 ];
 
 config.reporters = [
-      [
-        CucumberHtmlReporter,
-        {
-          outputDir: path.join(rootPath, '.tmp/cucumberjs-json/'),
-          language: 'en',
-        },
-      ],
-      'dot',
-      'spec',
-    ];
+  [
+    CucumberHtmlReporter,
+    {
+      outputDir: path.join( rootPath, '.tmp/cucumberjs-json/' ),
+      language: 'en',
+    },
+  ],
+  'dot',
+  'spec',
+];
 
 config.cucumberOpts = {
-//   snippetSyntax: '',
+  //   snippetSyntax: '',
   require: [ './test/cucumber/steps/**/*.ts' ],
   backtrace: true,
   failFast: false,
@@ -102,16 +102,16 @@ if ( typeof argv.maxInstances !== 'undefined' ) {
   config.maxInstances = argv.maxInstances;
 }
 
-config.onComplete = async (): Promise<void> => {     
-      await generateReport.generate({
-            jsonDir: path.join(rootPath, '/.tmp/cucumberjs-json/'),
-            openReportInBrowser: true,
-            mongooseServerUrl:"http://localhost:3000",
-            saveReportInMongoDb: argv.storeInDatabase ?? false,
-            saveEnrichedJSON: true
-      })
-  }
+config.onComplete = async (): Promise<void> => {
+  await generateReport.generate( {
+    jsonDir: path.join( rootPath, '/.tmp/cucumberjs-json/' ),
+    openReportInBrowser: true,
+    mongooseServerUrl: 'http://localhost:3000',
+    saveReportInMongoDb: argv.storeInDatabase ?? false,
+    saveEnrichedJSON: true
+  } );
+};
 
-config.params = configurationParameters ;
+config.params = configurationParameters;
 
 export { config };

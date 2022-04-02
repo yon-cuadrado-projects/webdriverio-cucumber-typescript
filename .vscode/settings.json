@@ -9,38 +9,36 @@
     "**/node_modules": true,
     "**/dist": true
   },
-  "editor.tabSize": 6,
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
   "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
   "prettier.bracketSpacing": true,
   "cucumberautocomplete.strictGherkinValidation": true,
   "cucumberautocomplete.customParameters": [
-      // {
-      //   "parameter":"{ab}",
-      //   "value":"(a|b)"
-      // },
-      // {
-      //   "parameter": "/\{a.*\}/",
-      //   "value": "a"
-      // },
-      // {
-      //   "parameter": "'{string}'",
-      //   "value": "'[^']+'"
-      // },
-      {
-        "parameter": "'<{string}>'",
-        "value": "'[^']+'"
-      }
-    ],
+    // {
+    //   "parameter":"{ab}",
+    //   "value":"(a|b)"
+    // },
+    // {
+    //   "parameter": "/\{a.*\}/",
+    //   "value": "a"
+    // },
+    // {
+    //   "parameter": "'{string}'",
+    //   "value": "'[^']+'"
+    // },
+    {
+      "parameter": "'<{string}>'",
+      "value": "'[^']+'"
+    }
+  ],
   "cucumberautocomplete.pages": {
-      "users": "test/features/page_objects/users.storage.js",
-      "pathes": "test/features/page_objects/pathes.storage.js",
-      "main": "test/features/support/page_objects/main.page.js"
+    "users": "test/features/page_objects/users.storage.js",
+    "pathes": "test/features/page_objects/pathes.storage.js",
+    "main": "test/features/support/page_objects/main.page.js"
   },
-
   "cucumberautocomplete.steps": [
-      "test/cucumber/steps/**/*.ts"
+    "test/cucumber/steps/**/*.ts"
   ],
   "cucumberautocomplete.syncfeatures": "test/cucumber/features/*feature",
   "cucumberautocomplete.strictGherkinCompletion": true,
@@ -48,14 +46,14 @@
   "cucumberautocomplete.stepsInvariants": true,
   "cucumberautocomplete.skipDocStringsFormat": true,
   "cucumberautocomplete.formatConfOverride": {
-      // "And": 3,
-      "But": "relative"
+    // "And": 3,
+    "But": "relative"
   },
   "cucumberautocomplete.onTypeFormat": true,
   "editor.quickSuggestions": {
-      "comments": false,
-      "strings": true,
-      "other": true
+    "comments": false,
+    "strings": true,
+    "other": true
   },
   "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)",
   "eslint.validate": [
@@ -63,25 +61,27 @@
     "typescript",
     "javascriptreact",
     "typescriptreact"
-],
+  ],
   "eslint.lintTask.enable": true,
   "[javascript]": {
-      "editor.formatOnSave": false
-    },
-    "[javascriptreact]": {
-      "editor.formatOnSave": false
-    },
-    "[typescript]": {
-      "editor.formatOnSave": false
-    },
-    "[typescriptreact]": {
-      "editor.formatOnSave": false
-    },
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "wdioAdapterExplorer.logpanel": true,
-    "wdioAdapterExplorer.featuresPath": "test/cucumber/features",
-    "wdioAdapterExplorer.featuresLanguage": "en"
-
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true,
+    "source.sortMembers": true
+  },
+  "wdioAdapterExplorer.logpanel": true,
+  "wdioAdapterExplorer.featuresPath": "test/cucumber/features",
+  "wdioAdapterExplorer.featuresLanguage": "en",
+  "editor.formatOnSave": true
 }
