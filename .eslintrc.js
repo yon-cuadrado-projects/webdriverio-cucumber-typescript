@@ -90,13 +90,15 @@ module.exports = {
             "error",
             2,
             {
-                "ObjectExpression": "first",
+                "ObjectExpression": 1,
                 "FunctionDeclaration": {
                     "parameters": "first"
                 },
                 "FunctionExpression": {
                     "parameters": "first"
-                }
+                },
+                "ArrayExpression": 1,
+                "ImportDeclaration": "first"
             }
         ],
         "@typescript-eslint/member-delimiter-style": [
