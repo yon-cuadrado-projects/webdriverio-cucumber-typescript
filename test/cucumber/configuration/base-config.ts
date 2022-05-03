@@ -1,7 +1,7 @@
 import 'reflect-metadata';
-import { CustomCommands } from '../custom-commands/custom-commands';
-import { registerPagesInContainer } from '../container/container';
 import CucumberHtmlReporter from 'wdio-reporter-html';
+import { registerPagesInContainer } from '../container/container';
+import { CustomCommands } from '../custom-commands/custom-commands';
 
 const config: WebdriverIO.Config = {
   autoCompileOpts: {
@@ -12,10 +12,6 @@ const config: WebdriverIO.Config = {
       transpileOnly: true,
       project: 'tsconfig.json'
     },
-    // tsConfigPathsOpts:{
-    //   baseUrl: './',
-    //   paths: { '@models': [ 'src/lib/models/models.ts' ], '@common-functions': [ 'src/lib/common-functions/common-functions.ts' ] }
-    // }
   },
   //
   // ==================
@@ -46,17 +42,6 @@ const config: WebdriverIO.Config = {
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
   framework: 'cucumber',
-  //   reporters: [
-  //     [
-  //       CucumberHtmlReporter,
-  //       {
-  //         outputDir: path.join(rootPath, '.tmp/cucumberjs-json/'),
-  //         language: 'en',
-  //       },
-  //     ],
-  //     'dot',
-  //     'spec',
-  //   ],
 
   reporters: [
     [
@@ -89,15 +74,6 @@ const config: WebdriverIO.Config = {
     CucumberHtmlReporter.attach( await browser.takeScreenshot(), 'image/png' );
   },
 
-  //   onComplete: async (): Promise<void> => {     
-  //       await generateReport.generate({
-  //             jsonDir: path.join(rootPath, '/.tmp/cucumberjs-json/'),
-  //             openReportInBrowser: true,
-  //             mongooseServerUrl:"http://localhost:3000",
-  //             saveReportInMongoDb: true,
-  //             saveEnrichedJSON: true
-  //       })
-  //   },
 
   services: [
     [
@@ -106,7 +82,7 @@ const config: WebdriverIO.Config = {
         logPath: './.tmp/',
         //   skipSeleniumInstall: true,
         installArgs: {
-          version: '4.1.0',
+          version: '4.1.4',
 
           drivers: {
             chrome: {
@@ -127,7 +103,7 @@ const config: WebdriverIO.Config = {
           },
         },
         args: {
-          version: '4.1.0',
+          version: '4.1.4',
           drivers: {
             chrome: {
               version: 'latest',
