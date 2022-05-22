@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import CucumberHtmlReporter from 'wdio-reporter-html';
+import CucumberHtmlReporter from 'wdio-cucumber-html-reporter';
 import { registerPagesInContainer } from '../container/container';
 import { CustomCommands } from '../custom-commands/custom-commands';
 

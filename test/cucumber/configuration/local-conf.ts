@@ -1,10 +1,10 @@
+import { generateReport } from 'cucumber-html-report-generator';
+import path from 'path';
+import CucumberHtmlReporter from 'wdio-cucumber-html-reporter';
+import yargs from 'yargs';
 import type CommandLineParameters from '../models/command-line-parameters';
 import { config } from './base-config';
 import { configurationParameters } from './configuration-data';
-import yargs from 'yargs';
-import path from 'path';
-import { generateReport } from 'cucumber-html-report-generator';
-import CucumberHtmlReporter from 'wdio-reporter-html';
 
 const rootPath = path.join( path.dirname( require.resolve( './base-config.ts' ) ), '../../../' );
 
