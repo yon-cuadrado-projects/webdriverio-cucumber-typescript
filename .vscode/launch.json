@@ -26,7 +26,31 @@
                 "${workspaceFolder}/dist/**/**/*.js",
                 "<node_internals>/**",
                 "node_modules/**"
-              ]
+            ]
+        },
+        {
+            "name": "generate report",
+            "type": "node",
+            "request": "launch",
+            "timeout": 60000,
+            "autoAttachChildProcesses": true,
+            "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "smartStep": true,
+            "args": [
+                "${workspaceFolder}/test/cucumber/configuration/local-conf.js",
+                "--spec",
+                "test/cucumber/features/actions-in-browser.feature:11",
+                "--browser=chrome",
+                "--debug",
+                "--maxInstances=1"
+            ],
+            "skipFiles": [
+                "${workspaceFolder}/dist/**/**/*.js",
+                "<node_internals>/**",
+                "node_modules/**"
+            ]
         }
     ]
 }
