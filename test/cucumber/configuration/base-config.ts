@@ -82,7 +82,7 @@ const config: WebdriverIO.Config = {
         logPath: './.tmp/',
         //   skipSeleniumInstall: true,
         installArgs: {
-          version: '4.1.4',
+          version: '4.4.0',
 
           drivers: {
             chrome: {
@@ -103,7 +103,7 @@ const config: WebdriverIO.Config = {
           },
         },
         args: {
-          version: '4.1.4',
+          version: '4.4.0',
           drivers: {
             chrome: {
               version: 'latest',
